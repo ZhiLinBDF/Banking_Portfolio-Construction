@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from pandas_datareader import data
 from matplotlib import pyplot as plt
-df = data.DataReader(['GOOGL', 'COST','NKE','NOG','MCB','TMO','KIM','MSFT','JBHT','AEE'], 'yahoo', start='2020/10/10', end='2021/10/20')
+df = data.DataReader(['GOOGL', 'COST','NKE','NOG','MCB','TMO','KIM','MSFT','JBHT','AEE'], 'yahoo', start='2020/10/20', end='2021/10/20')
 df= df['Adj Close']
 
 cov_matrix=df.pct_change().apply(lambda x: np.log(1+x)).cov() #covariance matrix
@@ -31,7 +31,7 @@ p_vol = []
 p_weights = [] 
 
 num_assets = len(df.columns)
-num_portfolios = 10000
+num_portfolios = 100000
 
 for portfolio in range(num_portfolios):
     weights = np.random.random(num_assets)#random floats

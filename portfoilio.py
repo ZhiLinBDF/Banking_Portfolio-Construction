@@ -3,6 +3,8 @@ import pandas as pd
 from pandas_datareader import data
 from matplotlib import pyplot as plt
 df = data.DataReader(['GOOGL', 'COST','NKE','NOG','MCB','TMO','KIM','MSFT','JBHT','AEE'], 'yahoo', start='2020/10/20', end='2021/10/20')
+#df = data.DataReader(['GOOGL', 'PG','AMZN','XOM','BRK-B','JNJ','UNP','AMT','AAPL','NEE'], 'yahoo', start='2020/10/20', end='2021/10/20')
+#construct traditional portfolio
 df= df['Adj Close']
 
 cov_matrix=df.pct_change().apply(lambda x: np.log(1+x)).cov() #covariance matrix
